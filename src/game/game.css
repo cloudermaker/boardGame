@@ -1,0 +1,17 @@
+.section-actions {
+    display: block;
+}
+
+.actions-main {
+    display: flex;
+    padding: 10px 0;
+}
+
+.actions-steps {
+    display: block;
+}
+
+.section-game {
+    display: block;
+    padding: 10px;
+}
