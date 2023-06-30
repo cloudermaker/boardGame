@@ -1,6 +1,6 @@
-import "./App.css";
+import './App.css';
 
-import { Game } from "./game";
+import { Game } from './game';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       </header>
 
       <body className="App-body">
-        <Game />
+        <Game width={3} height={3} />
       </body>
 
       <footer className="App-footer">
