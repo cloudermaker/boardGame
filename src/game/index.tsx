@@ -1,16 +1,6 @@
-import GridLayout from 'react-grid-layout';
+import Cell from './cell';
 
 import './game.css';
-import Cell from './cell';
-import { useState } from 'react';
-
-interface TLayout {
-  i: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-}
 
 export const Game = ({
   width,
@@ -19,26 +9,11 @@ export const Game = ({
   width: number;
   height: number;
 }): JSX.Element => {
-  const [gameMap, setGameMap] = useState<TLayout[]>([]);
-
-  const initTab = (): void => {
-    const tmpMap: TLayout[] = [];
-
-    for (let i = 0; i < height; i++) {
-      for (let j = 0; j < width; j++) {
-        tmpMap.push({ i: `a${i * width + j}`, x: i, y: j, w: 1, h: 1 });
-      }
-    }
-
-    setGameMap(tmpMap);
-  };
-
-  console.log(gameMap);
   return (
     <>
       <section className="section-actions">
         <div className="actions-main">
-          <button onClick={initTab}>New game</button>
+          <button>New game</button>
           <button>Stop game</button>
         </div>
 
@@ -48,17 +23,17 @@ export const Game = ({
       </section>
 
       <section className="section-game">
-        <GridLayout
-          className="gameMap"
-          layout={gameMap}
-          cols={width}
-          rowHeight={height}
-          width={width * 100}
-        >
-          {gameMap.map((cell) => (
-            <Cell key={cell.i} label={cell.i} />
+        <table>
+          {[...new Array(height)].map((a, idxH) => (
+            <tr key={idxH}>
+              {[...new Array(width)].map((a, idxW) => (
+                <td key={`td_${idxH * width + idxW}`}>
+                  <Cell label={`${idxH * width + idxW}`} />
+                </td>
+              ))}
+            </tr>
           ))}
-        </GridLayout>
+        </table>
       </section>
     </>
   );
