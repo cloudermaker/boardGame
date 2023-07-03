@@ -12,6 +12,16 @@
 }
 
 .section-game {
-    display: block;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.section-game-table {
+    border-collapse: collapse;
+    border: 5px solid brown;
+}
+
+.table-td {
+    padding: 0px;
 }

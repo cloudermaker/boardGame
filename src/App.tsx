@@ -10,7 +10,7 @@ function App() {
       </header>
 
       <body className="App-body">
-        <Game width={3} height={3} />
+        <Game width={15} height={8} />
       </body>
 
       <footer className="App-footer">

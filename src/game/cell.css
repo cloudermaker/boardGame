@@ -5,4 +5,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.cell-id {
+    font-size: xx-small;
+    right: 0px;
+    position: absolute;
+    bottom: 0px;
 }
