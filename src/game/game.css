@@ -11,6 +11,13 @@
     display: block;
 }
 
+.actions-input {
+    margin: 0px 5px;
+    width: 35px;
+    align-self: center;
+    padding: 5px 5px;
+}
+
 .section-game {
     padding: 10px;
     display: flex;

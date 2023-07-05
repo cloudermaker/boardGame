@@ -16,6 +16,11 @@ export enum ECellBackground {
   sea,
 }
 
+export type TCell = {
+  content: ECellContent;
+  background: ECellBackground;
+};
+
 const Cell = ({
   id,
   background,
