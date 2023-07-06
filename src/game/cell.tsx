@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCat, faFish, faHome } from '@fortawesome/free-solid-svg-icons';
 
 export enum ECellContent {
-  home,
-  food,
-  entity,
-  empty,
+  home = 'Home',
+  food = 'Food',
+  entity = 'Entity',
+  empty = 'Empty',
 }
 
 export enum ECellBackground {
-  grass,
-  snow,
-  empty,
-  sea,
+  grass = 'Grass',
+  snow = 'Snow',
+  sea = 'Sea',
+  empty = 'Empty',
 }
 
 export type TCell = {
@@ -38,11 +38,26 @@ const Cell = ({
     return 'white';
   };
 
+  const printContent = (): JSX.Element => {
+    if (content === ECellContent.food)
+      return <FontAwesomeIcon icon={faFish} style={{ position: 'absolute' }} />;
+    if (content === ECellContent.home)
+      return <FontAwesomeIcon icon={faHome} style={{ position: 'absolute' }} />;
+    if (content === ECellContent.entity)
+      return <FontAwesomeIcon icon={faCat} style={{ position: 'absolute' }} />;
+
+    return <></>;
+  };
+
   return (
     <div className="cell" style={{ backgroundColor: getBackgroundColor() }}>
-      {content === ECellContent.food && <FontAwesomeIcon icon={faFish} />}
-      {content === ECellContent.home && <FontAwesomeIcon icon={faHome} />}
-      {content === ECellContent.entity && <FontAwesomeIcon icon={faCat} />}
+      <div className="cell-label">
+        <div>Id: {id}</div>
+        <div>background: {background}</div>
+        <div>content: {content}</div>
+      </div>
+
+      {printContent()}
 
       <span className="cell-id">{id}</span>
     </div>

@@ -5,11 +5,13 @@ export const CustomButton = ({
   onClick,
   className,
   disabled,
+  children,
 }: {
-  label: string;
+  label?: string;
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  children?: JSX.Element;
 }): JSX.Element => {
   return (
     <button
@@ -17,7 +19,7 @@ export const CustomButton = ({
       className={`button ${className}`}
       disabled={disabled}
     >
-      {label}
+      {children || label}
     </button>
   );
 };

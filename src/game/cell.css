@@ -14,3 +14,20 @@
     position: absolute;
     bottom: 0px;
 }
+
+.cell:hover .cell-label {
+    display: block;
+}
+
+.cell-label {
+    display: none;
+    border: 1px solid black;
+    background-color: aliceblue;
+    padding: 5px;
+    z-index: 99;
+    position: absolute;
+    text-align: left;
+    left: 40px;
+    bottom: 40px;
+    width: max-content;
+}

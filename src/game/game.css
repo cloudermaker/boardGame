@@ -8,7 +8,8 @@
 }
 
 .actions-steps {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .actions-input {
@@ -20,7 +21,7 @@
 
 .section-game {
     padding: 10px;
-    display: flex;
+    display: grid;
     justify-content: center;
 }
 
