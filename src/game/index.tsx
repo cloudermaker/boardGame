@@ -31,12 +31,12 @@ export const Game = (): JSX.Element => {
     return ECellBackground.empty;
   };
 
-  const computeContent = (): ECellContent => {
+  const computeContentList = (): ECellContent[] => {
     var rand = Math.floor(Math.random() * 20);
-    if (rand <= 2) return ECellContent.entity;
-    if (rand <= 8) return ECellContent.food;
+    if (rand <= 2) return [ECellContent.entity];
+    if (rand <= 8) return [ECellContent.food];
 
-    return ECellContent.empty;
+    return [];
   };
 
   const resetGame = (): void => {
@@ -49,7 +49,7 @@ export const Game = (): JSX.Element => {
       const tmpLine: TCell[] = [];
       [...new Array(width)].forEach((_, idxW) => {
         tmpLine.push({
-          content: idxH === 0 && idxW === 0 ? ECellContent.home : computeContent(),
+          contentList: idxH === 0 && idxW === 0 ? [ECellContent.home] : computeContentList(),
           background: idxH === 0 && idxW === 0 ? ECellBackground.empty : computeBackground(),
         });
       });
@@ -70,13 +70,13 @@ export const Game = (): JSX.Element => {
 
     gameTab.forEach((line) => {
       line.forEach((cell) => {
-        const content = cell.content.toString();
-
-        if (entityTab[content]) {
-          entityTab[content] += 1;
-        } else {
-          entityTab[content] = 1;
-        }
+        cell.contentList.forEach((content) => {
+          if (entityTab[content]) {
+            entityTab[content] += 1;
+          } else {
+            entityTab[content] = 1;
+          }
+        });
       });
     });
 
@@ -151,7 +151,7 @@ export const Game = (): JSX.Element => {
 
                   return (
                     <td className="table-td" key={`td_${id}`}>
-                      <Cell id={id.toString()} background={cell.background} content={cell.content} />
+                      <Cell id={id.toString()} cell={cell} />
                     </td>
                   );
                 })}

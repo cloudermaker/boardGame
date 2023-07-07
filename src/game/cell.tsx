@@ -17,34 +17,28 @@ export enum ECellBackground {
 }
 
 export type TCell = {
-  content: ECellContent;
+  contentList: ECellContent[];
   background: ECellBackground;
 };
 
-const Cell = ({
-  id,
-  background,
-  content,
-}: {
-  id: string;
-  background: ECellBackground;
-  content?: ECellContent;
-}): JSX.Element => {
+const Cell = ({ id, cell }: { id: string; cell: TCell }): JSX.Element => {
   const getBackgroundColor = (): string => {
-    if (background === ECellBackground.grass) return '#c8f4d5';
-    if (background === ECellBackground.sea) return '#bdf7ff';
-    if (background === ECellBackground.snow) return '#e8e7d7';
+    if (cell.background === ECellBackground.grass) return '#c8f4d5';
+    if (cell.background === ECellBackground.sea) return '#bdf7ff';
+    if (cell.background === ECellBackground.snow) return '#e8e7d7';
 
     return 'white';
   };
 
   const printContent = (): JSX.Element => {
-    if (content === ECellContent.food)
-      return <FontAwesomeIcon icon={faFish} style={{ position: 'absolute' }} />;
-    if (content === ECellContent.home)
+    if (cell.contentList.includes(ECellContent.home))
       return <FontAwesomeIcon icon={faHome} style={{ position: 'absolute' }} />;
-    if (content === ECellContent.entity)
-      return <FontAwesomeIcon icon={faCat} style={{ position: 'absolute' }} />;
+    if (cell.contentList.includes(ECellContent.entity)) {
+      const entityCount = cell.contentList.filter((content) => content === ECellContent.entity).length;
+      return <FontAwesomeIcon icon={faCat} style={{ position: 'absolute' }} size={entityCount >= 2 ? '2x' : '1x'} />;
+    }
+    if (cell.contentList.includes(ECellContent.food))
+      return <FontAwesomeIcon icon={faFish} style={{ position: 'absolute' }} />;
 
     return <></>;
   };
@@ -53,12 +47,13 @@ const Cell = ({
     <div className="cell" style={{ backgroundColor: getBackgroundColor() }}>
       <div className="cell-label">
         <div>Id: {id}</div>
-        <div>background: {background}</div>
-        <div>content: {content}</div>
+        <div>Background: {cell.background}</div>
+        <div>Content: {cell.contentList.join(',')}</div>
       </div>
 
       {printContent()}
 
+      {printContent()}
       <span className="cell-id">{id}</span>
     </div>
   );

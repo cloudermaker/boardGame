@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## To do
+
+1. configuration panel
+   1. debug mode
+   2. sélectionner un type d'entité (chat, autre)
+   3. choisir le nombre d'entité (pourcentage)
+   4. repop de food ou entité aléatoire ?
+   5. grossissement de l'entité en fonction du nombre qu'il mange ?
+2. couleur des entités différentes à chaque fois
+
 ## Available Scripts
 
 In the project directory, you can run:
